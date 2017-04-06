@@ -1,0 +1,29 @@
+home {
+
+    ion-content {
+      background-color: map-get($colors, secondary);
+    }
+
+    scroll-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    ion-row {
+      align-items: center;
+      text-align: center;
+    }
+
+    ion-item {
+      border-radius: 5px !important;
+      padding-left: 10px !important;
+      margin-bottom: 10px;
+      background-color: #f6f6f6;
+      opacity: 0.7;
+      font-size: 0.9em;
+    }
+
+    ion-list {
+      margin: 0;
+    }
+}

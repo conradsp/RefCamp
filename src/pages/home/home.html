@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button icon-only menuToggle left>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title class="centerblock">
+      Refugee Camp Portal
+    </ion-title>
+  <!--  <ion-buttons end>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>  -->
+
+  </ion-navbar>
+</ion-header>
+
+<ion-menu [content]="mycontent">
+  <ion-content>
+    <ion-list>
+      <p>some menu content, could be list items</p>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+<ion-content padding>
+  <ion-searchbar
+    [(ngModel)]="currSearch"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onSearchInput($event)"
+    (ionCancel)="onSearchCancel($event)">
+  </ion-searchbar>
+  <h3 class="centerblock">Welcome {{currUser.name}}</h3>
+  <ion-list>
+    <div *ngFor="let category of categories">
+      <ion-item ngClass="item-stable"
+                (click)="toggleCategory(category)"
+                ngClass="{active: isCatShown(category)}">
+        <ion-icon name="arrow-dropdown" *ngIf="isCatShown(category)" item-left></ion-icon>
+        <ion-icon name="arrow-dropright" *ngIf="!isCatShown(category)" item-left></ion-icon>
+        {{category.name}}
+      </ion-item>
+      <ion-item ngClass="item-accordion"
+                *ngFor="let item of category.items"
+                [hidden]="!isCatShown(category)">
+        <ion-card>
+          <ion-item>
+            <ion-thumbnail item-left>
+              <img *ngIf='item.photos[0]' src="{{item.photos[0].filename}}">
+              <img *ngIf='!item.photos[0]' src="">
+            </ion-thumbnail>
+            <h2>{{item.name}}</h2>
+            <p>{{item.desc}}</p>
+            <p>Seller: {{item.seller}}</p>
+          </ion-item>
+        </ion-card>
+
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,12 @@
+{
+  "name": "RefCamp",
+  "app_id": "4bb355c8",
+  "v2": true,
+  "typescript": true,
+  "proxies": [
+    {
+      "path": "/",
+      "proxyUrl": "https://refcampweb.herokuapp.com/"
+    }
+  ]
+}
