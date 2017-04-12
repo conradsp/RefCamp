@@ -8,6 +8,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SellPage } from '../pages/sell/sell';
 import { LoginPage } from '../pages/login-page/login-page';
 import { RegisterPage } from '../pages/register-page/register-page';
+import { ProductPage } from '../pages/product/product';
 import { AuthModule } from '../providers/auth.module';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
@@ -25,7 +26,8 @@ const cloudSettings: CloudSettings = {
     SettingsPage,
     SellPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ProductPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {tabsPlacement: 'bottom'}),
@@ -40,7 +42,8 @@ const cloudSettings: CloudSettings = {
     SettingsPage,
     SellPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ProductPage
   ],
   providers: [AuthModule, {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]

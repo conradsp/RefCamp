@@ -44,9 +44,9 @@ export class SellPage {
         photos: [ { filename: this.filename }]
       };
     return new Promise((resolve, reject) => {
-      this.http.post('https://refcampweb.herokuapp.com/api/products/', product)
+      this.http.put('https://refcampweb.herokuapp.com/api/products/', product)
         .subscribe(res => {
-          //let data = res.json();
+          this.presentToast("Product Saved");
           resolve(res.json());
         }, (err) => {
           reject(err);

@@ -46,7 +46,7 @@
                 *ngFor="let item of category.items"
                 [hidden]="!isCatShown(category)">
         <ion-card>
-          <ion-item>
+          <ion-item (click)="viewProduct(item)">
             <ion-thumbnail item-left>
               <img *ngIf='item.photos[0]' src="{{item.photos[0].filename}}">
               <img *ngIf='!item.photos[0]' src="">

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { NavController } from 'ionic-angular';
+import { ProductPage } from '../../pages/product/product';
 
 import { AuthModule } from '../../providers/auth.module';
 
@@ -38,12 +39,38 @@ export class HomePage {
           }
         }
       }
-      //that.categories = result;
     });
 
     this.authService.checkAuthentication().then((result) => {
       that.currUser = that.authService.user;
 
+    });
+  }
+
+  ionViewDidLoad() {
+    var that = this;
+    this.getProducts().then((result) => {
+      let products = result as Array<any>;
+      for (let product of products) {
+        switch(product.category) {
+          case 'Food': {
+            that.categories[0].items.push(product);
+            break;
+          }
+          case 'Livestock': {
+            that.categories[1].items.push(product);
+            break;
+          }
+          case 'Machinery': {
+            that.categories[2].items.push(product);
+            break;
+          }
+          case 'Services': {
+            that.categories[3].items.push(product);
+            break;
+          }
+        }
+      }
     });
   }
 
@@ -57,6 +84,10 @@ export class HomePage {
           reject(err);
         });
     });
+  }
+
+  viewProduct(product) {
+    this.navCtrl.push(ProductPage, {id: product._id});
   }
 
   onSearchInput(event) {
